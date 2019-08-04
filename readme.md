@@ -21,4 +21,4 @@ $this->assertSame(1, $fakeDTO->id);
 $this->assertSame('test', $fakeDTO->name);
 $this->assertSame($dateTime, $fakeDTO->createdAt);
 ```
-And class have te same property with base class and the same property value
+And class have the same properties with base class and the same properties value
