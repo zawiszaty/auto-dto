@@ -3,10 +3,10 @@
 
 namespace Tests\TestDoubles;
 
-use App\DTO;
 
+use Zawiszaty\App\ObjectDTO;
 
-class FakeDTO extends DTO
+class FakeObjectDTO extends ObjectDTO
 {
     public function __construct(object $class)
     {

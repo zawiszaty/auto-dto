@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App;
+namespace Zawiszaty\App;
 
 
-class DTO
+class ObjectDTO
 {
     /** @var string */
     private $class;

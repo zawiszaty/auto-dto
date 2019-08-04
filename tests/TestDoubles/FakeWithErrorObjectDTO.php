@@ -1,12 +1,10 @@
 <?php
 
-
 namespace Tests\TestDoubles;
 
+use Zawiszaty\App\ObjectDTO;
 
-use App\DTO;
-
-class FakeWithErrorDTO extends DTO
+class FakeWithErrorObjectDTO extends ObjectDTO
 {
     public function __construct(object $object)
     {
