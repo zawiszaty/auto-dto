@@ -4,11 +4,19 @@
 #### Example 
 
 ```php
-class FakeDTO extends DTO
+class FakeObjectDTO extends ObjectDTO
 {
     public function __construct(object $class)
     {
         parent::__construct($class,FakeClass::class);
+    }
+}
+/// OR
+class FakeArrayDTO extends ArrayDTO
+{
+    public function __construct(array $params)
+    {
+        parent::__construct($params, FakeClass::class);
     }
 }
 ```
@@ -16,7 +24,20 @@ class FakeDTO extends DTO
 ```php
 $dateTime = new \DateTime();
 $fakeClass = new FakeClass(1, 'test', $dateTime);
-$fakeDTO = new FakeDTO($fakeClass);
+$fakeDTO = new FakeObjectDTO($fakeClass);
+
+$this->assertSame(1, $fakeDTO->id);
+$this->assertSame('test', $fakeDTO->name);
+$this->assertSame($dateTime, $fakeDTO->createdAt);
+
+/// OR
+
+$dateTime = new \DateTime();
+$fakeDTO = new FakeArrayDTO([
+    'id' => 1,
+    'name' => 'test',
+    'createdAt' => $dateTime
+]);
 $this->assertSame(1, $fakeDTO->id);
 $this->assertSame('test', $fakeDTO->name);
 $this->assertSame($dateTime, $fakeDTO->createdAt);
