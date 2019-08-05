@@ -4,7 +4,9 @@
 namespace Tests\TestDoubles;
 
 
-class FakeClass
+use Zawiszaty\App\DTOInterface;
+
+class FakeClass implements DTOInterface
 {
     private $id;
     private $name;

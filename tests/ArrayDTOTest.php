@@ -15,7 +15,7 @@ class ArrayDTOTest extends TestCase
             'id' => 1,
             'name' => 'test',
             'createdAt' => $dateTime
-        ]);
+        ], ['id', 'name', 'createdAt']);
         $this->assertSame(1, $fakeDTO->id);
         $this->assertSame('test', $fakeDTO->name);
         $this->assertSame($dateTime, $fakeDTO->createdAt);
@@ -24,6 +24,6 @@ class ArrayDTOTest extends TestCase
     function test_error()
     {
         $this->expectException(DTOException::class);
-        new FakeArrayDTO([]);
+        new FakeArrayDTO([], ['id']);
     }
 }

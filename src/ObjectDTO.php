@@ -6,43 +6,30 @@ namespace Zawiszaty\App;
 
 class ObjectDTO
 {
-    /** @var string */
-    private $class;
-
-    public function __construct(object $object, string $class)
+    public function __construct(DTOInterface $object, array $propertyName)
     {
-        $this->class = $class;
-        $propertiesNames = $this->getClassPropertiesName();
-
-        $this->mapProperty($object, $propertiesNames);
+        $this->mapProperty($object, $propertyName);
     }
 
-    private function getClassPropertiesName(): array
+    private function mapProperty(DTOInterface $params, array $propertiesNames): void
     {
-        $class = new \ReflectionClass($this->class);
-        $properties = $class->getProperties();
-        $propertiesName = [];
-
-        array_map(function (\ReflectionProperty $property) use (&$propertiesName) {
-            $propertiesName[] = $property->getName();
-        }, $properties);
-
-        return $propertiesName;
-    }
-
-    private function mapProperty(object $params, array $propertiesNames): void
-    {
-        foreach ($propertiesNames as $propertiesName) {
-            try {
+        foreach ($propertiesNames as $propertiesName)
+        {
+            try
+            {
                 $this->{$propertiesName} = $params->{'get' . ucfirst($propertiesName)}();
-            } catch (\Error $error) {
-                try {
+            }
+            catch (\Error $error)
+            {
+                try
+                {
                     $this->{$propertiesName} = $params->{$propertiesName};
-                } catch (\Error $error) {
+                }
+                catch (\Error $error)
+                {
                     throw DTOException::fromMssingProperty($propertiesName);
                 }
             }
-
         }
     }
 }

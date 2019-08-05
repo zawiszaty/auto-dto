@@ -4,7 +4,9 @@
 namespace Tests\TestDoubles;
 
 
-class FakeWithErrorClass
+use Zawiszaty\App\DTOInterface;
+
+class FakeWithErrorClass implements DTOInterface
 {
     private $id;
     private $name;
@@ -12,14 +14,15 @@ class FakeWithErrorClass
 
     /**
      * FakeClass constructor.
+     *
      * @param $id
      * @param $name
      * @param $createdAt
      */
     public function __construct($id, $name, $createdAt)
     {
-        $this->id = $id;
-        $this->name = $name;
+        $this->id        = $id;
+        $this->name      = $name;
         $this->createdAt = $createdAt;
     }
 }

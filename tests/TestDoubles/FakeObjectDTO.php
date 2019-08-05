@@ -8,8 +8,8 @@ use Zawiszaty\App\ObjectDTO;
 
 class FakeObjectDTO extends ObjectDTO
 {
-    public function __construct(object $class)
+    public function __construct(FakeClass $object, array $propertyName)
     {
-        parent::__construct($class,FakeClass::class);
+        parent::__construct($object, $propertyName);
     }
 }

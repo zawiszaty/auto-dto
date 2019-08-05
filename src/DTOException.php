@@ -11,8 +11,8 @@ class DTOException extends \RuntimeException
         return new self("Property: $property doesnt exist or dont have public access or dont have public getter");
     }
 
-    public static function fromMssingPropertyinArray()
+    public static function fromMssingPropertyinArray(string $property)
     {
-        return new self("Is Not a valid params array");
+        return new self("Property: $property is missing in array");
     }
 }

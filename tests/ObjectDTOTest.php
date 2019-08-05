@@ -15,7 +15,7 @@ class ObjectDTOTest extends TestCase
     {
         $dateTime = new \DateTime();
         $fakeClass = new FakeClass(1, 'test', $dateTime);
-        $fakeDTO = new FakeObjectDTO($fakeClass);
+        $fakeDTO = new FakeObjectDTO($fakeClass, ['id', 'name', 'createdAt']);
 
         $this->assertSame(1, $fakeDTO->id);
         $this->assertSame('test', $fakeDTO->name);
@@ -27,6 +27,6 @@ class ObjectDTOTest extends TestCase
         $this->expectException(DTOException::class);
         $dateTime = new \DateTime();
         $fakeClass = new FakeWithErrorClass(1, 'test', $dateTime);
-        new FakeWithErrorObjectDTO($fakeClass);
+        new FakeWithErrorObjectDTO($fakeClass, ['id', 'name', 'createddt']);
     }
 }
